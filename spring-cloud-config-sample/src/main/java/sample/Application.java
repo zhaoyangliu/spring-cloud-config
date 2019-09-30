@@ -17,13 +17,16 @@
 package sample;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+@RefreshScope
 @RestController
 @SpringBootApplication
 public class Application {
@@ -31,13 +34,21 @@ public class Application {
 	@Autowired
 	private Environment environment;
 
+	@Value("${hostedcommander.telemetry.redshift.password:Hello world - Config Server is not working..pelase check}")
+	private String hostedcommanderRedshiftPassword;
+
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
 	}
 
-	@RequestMapping("/")
-	public String query(@RequestParam("q") String q) {
-		return this.environment.getProperty(q);
+	// @RequestMapping("/")
+	// public String query(@RequestParam("q") String q) {
+	// return this.environment.getProperty(q);
+	// }
+
+	@RequestMapping("/getHostedcommanderRedshiftPassword")
+	public String query() {
+		return this.hostedcommanderRedshiftPassword;
 	}
 
 }

@@ -28,7 +28,7 @@
 	<properties>
 		<bintray.package>config</bintray.package>
 		<spring-cloud-commons.version>2.2.0.BUILD-SNAPSHOT</spring-cloud-commons.version>
-		<aws-java-sdk.version>1.11.52</aws-java-sdk.version>
+		<aws-java-sdk.version>1.11.328</aws-java-sdk.version>
 		<maven-checkstyle-plugin.failsOnError>true</maven-checkstyle-plugin.failsOnError>
 		<maven-checkstyle-plugin.failsOnViolation>true
 		</maven-checkstyle-plugin.failsOnViolation>
@@ -76,6 +76,11 @@
 				<artifactId>aws-java-sdk-s3</artifactId>
 				<version>${aws-java-sdk.version}</version>
 			</dependency>
+			<dependency>
+			<groupId>com.amazonaws</groupId>
+			<artifactId>aws-java-sdk-secretsmanager</artifactId>
+			<version>1.11.328</version>
+		</dependency>
 			<dependency>
 				<groupId>com.google.auth</groupId>
 				<artifactId>google-auth-library-oauth2-http</artifactId>
